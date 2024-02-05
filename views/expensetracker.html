@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"></link>
+    <style>
+      /* Add custom styles here */
+      body {
+        padding: 20px;
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+
+      #pagination {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form onsubmit="addNewExpense(event)" class="mb-4">
+        <div class="form-group">
+          <label for="expenseAmount">Choose Expense Amount:</label>
+          <input
+            type="number"
+            id="expenseAmount"
+            name="expenseAmount"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Choose Description:</label>
+          <input
+            type="text"
+            id="description"
+            name="description"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="category">Choose a Category:</label>
+          <select id="category" name="category" class="form-control" required>
+            <option value="fuel">Fuel</option>
+            <option value="food">Food</option>
+            <option value="electricity">Electricity</option>
+            <option value="movie">Movie</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Expense</button>
+      </form>
+
+      <div id="message"></div>
+
+      <button id="rzp-button1" class="btn btn-success">Buy Premium</button>
+      <button onclick="download()" id="downloadexpense" class="btn btn-info">Download File</button>
+
+      <h2 class="mt-4">Expenses</h2>
+
+      <ul id="listOfExpenses" class="list-group"></ul>
+
+      <div id="pagination">
+        <button id="prevPage" onclick="loadExpenses('prev')" class="btn btn-secondary">Previous</button>
+        <span id="currentPage" class="mx-2">1</span> of <span id="totalPages">1</span>
+        <button id="nextPage" onclick="loadExpenses('next')" class="btn btn-secondary">Next</button>
+      </div>
+
+      <div class="form-inline mb-4">
+        <label for="expensesPerPage" class="mr-2">Expenses per Page:</label>
+        <input
+          type="number"
+          id="expensesPerPage"
+          name="expensesPerPage"
+          class="form-control mr-2"
+          min="5"
+          max="40"
+        />
+        <button onclick="setExpensesPerPage()" class="btn btn-primary">Set</button>
+      </div>
+
+      <ul id="downloadeditems" class="list-group"></ul>
+      <ul id="leaderboard" class="list-group"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script src="/js/expensetracker.js"></script>
+  </body>
+</html>
